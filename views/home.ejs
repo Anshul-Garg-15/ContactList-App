@@ -1,0 +1,47 @@
+ <html>
+    <head>
+        <title>
+            <%= title%>
+        </title>
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1 id="page-heading">
+            <i class="fas fa-address-book"></i>
+            My Contact List
+        </h1>
+        <div id="contact-list-container">
+        <ul>
+
+        <% for(let i of Contact_List){%>
+            
+            <li class="contact">
+                <div class="contactlist">
+                    <!-- <div> -->
+                       <p><%=i.name%></p>
+                    <!-- </div> -->
+                    <!-- <div> -->
+                        <p><%=i.phone%></p>
+                    <!-- </div> -->
+                </div>
+                <div class="delete-contact">
+                    <!-- for using query -->
+                    <!-- <a href="/delete-contact/?phone=<%=i.phone%>"> -->
+                        <!-- for using params -->
+                        <a href="/delete-contact/<%=i._id%>">
+                        <i class="fas fa-window-close"></i>
+                    </a>
+                </div>
+            </li>
+            <%}%>
+        </ul>   
+        <form action="/createlist" method="POST">
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="number" name="phone" placeholder="Enter your Mobile No." required>
+            <button type="submit">Add Number</button>
+        </form>
+    </div>
+    <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
